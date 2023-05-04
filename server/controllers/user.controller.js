@@ -21,6 +21,9 @@ const create = async (req, res) => {
   }
 }
 
+/**
+ * Load user and append to req.
+ */
 const userByID = async (req, res, next, id) => {
   try {
     let user = await User.findById(id)
@@ -101,7 +104,7 @@ const stripe_auth = (req, res, next) => {
     json: true,
     body: {client_secret:config.stripe_test_secret_key,code:req.body.stripe, grant_type:'authorization_code'}
   }, (error, response, body) => {
-    
+    //update user
     if(body.error){
       return res.status('400').json({
         error: body.error_description
@@ -114,6 +117,7 @@ const stripe_auth = (req, res, next) => {
 
 const stripeCustomer = (req, res, next) => {
   if(req.profile.stripe_customer){
+      //update stripe customer
       myStripe.customers.update(req.profile.stripe_customer, {
           source: req.body.token
       }, (err, customer) => {
@@ -157,7 +161,7 @@ const createCharge = (req, res, next) => {
     stripeAccount: req.profile.stripe_seller.stripe_user_id,
   }).then((token) => {
       myStripe.charges.create({
-        amount: req.body.amount * 100,
+        amount: req.body.amount * 100, //amount in cents
         currency: "usd",
         source: token.id,
       }, {

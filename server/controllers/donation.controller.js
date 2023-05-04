@@ -42,6 +42,7 @@ const create = (req, res) => {
     }
 }
 
+
 const create2 = (req, res, next) => {
     if (req.body.order.donation) {
         req.body.amount = req.body.order.donation.amount;
@@ -51,6 +52,7 @@ const create2 = (req, res, next) => {
         req.body.order.donation = ''
     }
     if (!req.body.amount || !req.body.charityId) {
+        // return res.json({ success: false, message: "missing amount or charityId" })
         next()
     } else {
         const donation = new Donation(req.body)
@@ -69,6 +71,7 @@ const create2 = (req, res, next) => {
                         return res.status(403).json({ success: false, message: "unable to post donation for charity passed in" })
                     } else {
                         req.body.order.donation = donation._id;
+                        // return res.status(200).json({ success: true, message: "successfully saved donation for charity passed in", donation: donation })
                         next()
                     }
                 })
@@ -207,6 +210,23 @@ const listByCharity = async (req, res) => {
                 });
             }
         })
+    // Donation.find({ "charity": req.params.charityId }).select("amount owner charity").exec(function (err, donations) {
+    //     if (err) {
+    //         return res.status(403).json({ success: false, message: "Unable to retrieve donations from charity passed in." });
+    //     }
+    //     if (donations && donations.length > 0) {
+    //         return res.status(200).json({
+    //             success: true,
+    //             message: "Successfully retrieved donations from charity.",
+    //             donation: donations
+    //         });
+    //     } else {
+    //         return res.status(404).json({
+    //             success: false,
+    //             message: "Unable to retrieve a match for donations from charity passed in."
+    //         });
+    //     }
+    // })
 }
 
 export default {

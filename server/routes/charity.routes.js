@@ -5,6 +5,7 @@ import charityCtrl from '../controllers/charity.controller'
 
 const router = express.Router()
 
+// get all charities
 router.route('/api/charities')
     .get(charityCtrl.list)
 

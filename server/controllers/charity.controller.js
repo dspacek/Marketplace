@@ -38,7 +38,9 @@ const create = async (req, res) => {
 }
 
 const one = async (req, res) => {
+   
    Charity.find({"_id": req.params.charityId}).select("name description updated owner").exec(function (err, charity) {
+        
         if (err) {
             return res.status(403).json({success: false, message: "Unable to retrieve charity passed in."});
         }
@@ -55,6 +57,7 @@ const one = async (req, res) => {
                 message: "Unable to retrieve a match for charity passed in."
             });
         }
+       
     })
 }
 
@@ -91,6 +94,34 @@ const read = (req, res) => {
     return res.json(req.charity)
 }
 
+// const update = (req, res) => {
+//     console.log(req)
+//     let form = new formidable.IncomingForm()
+//     form.keepExtensions = true
+//     form.parse(req, async (err, fields, files) => {
+//         if (err) {
+//             res.status(400).json({
+//                 message: "Photo could not be uploaded"
+//             })
+//         }
+//         let shop = req.shop
+//         shop = extend(shop, fields)
+//         shop.updated = Date.now()
+//         if(files.image){
+//             shop.image.data = fs.readFileSync(files.image.path)
+//             shop.image.contentType = files.image.type
+//         }
+//         try {
+//             let result = await shop.save()
+//             res.json(result)
+//         }catch (err){
+//             return res.status(400).json({
+//                 error: errorHandler.getErrorMessage(err)
+//             })
+//         }
+//     })
+// }
+
 const update = (req, res) => {
     let form = new formidable.IncomingForm()
     form.keepExtensions = true
@@ -119,6 +150,23 @@ const update = (req, res) => {
       }
     })
   }
+
+// const update = (req, res) => {
+//     console.log('i am running')
+//     if(!req.body.updated_charity) {
+//         return res.json( { success: false, message: "Must pass in updated charity info"})
+//     } else {
+//         Charity.findByIdAndUpdate({"_id": req.params.charityId}, req.body.updated_charity, function(err, charity) {
+//             if (err) {
+//                 return res.status(403).json( { success: false, message: "unable to update charity"})
+//             } else if (!charity) {
+//                 return res.status(403).json({success: false, message: "unable to find charity to update"})
+//             } else {
+//                 return res.status(200).json({success: true, message: "successfully updated charity"})
+//             }
+//         })
+//     }
+// }
 
 const remove = (req, res) => {
     Charity.findOneAndDelete({"_id": req.params.charityId}, function(err, charity) {
