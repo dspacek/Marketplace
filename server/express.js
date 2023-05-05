@@ -11,6 +11,8 @@ import authRoutes from './routes/auth.routes'
 import shopRoutes from './routes/shop.routes'
 import productRoutes from './routes/product.routes'
 import orderRoutes from './routes/order.routes'
+import charityRoutes from './routes/charity.routes'
+import donationRoutes from './routes/donation.routes'
 
 // modules for server side rendering
 import React from 'react'
@@ -49,6 +51,8 @@ app.use('/', authRoutes)
 app.use('/', shopRoutes)
 app.use('/', productRoutes)
 app.use('/', orderRoutes)
+app.use('/', charityRoutes)
+app.use('/', donationRoutes)
 
 app.get('*', (req, res) => {
   const sheets = new ServerStyleSheets()
