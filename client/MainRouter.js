@@ -21,9 +21,9 @@ import StripeConnect from './user/StripeConnect'
 import ShopOrders from './order/ShopOrders'
 import Order from './order/Order'
 // import CharityDonations from './charity/CharityDonations'
-// import EditCharity from './charity/EditCharity'
-// import NewCharity from './charity/NewCharity'
-// import MyCharities from './charity/MyCharities'
+import EditCharity from './charity/EditCharity'
+import NewCharity from './charity/NewCharity'
+import MyCharities from './charity/MyCharities'
 import MyAuctions from './auction/MyAuctions'
 import OpenAuctions from './auction/OpenAuctions'
 import NewAuction from './auction/NewAuction'
@@ -56,12 +56,12 @@ const MainRouter = () => {
       <Route path="/seller/stripe/connect" component={StripeConnect} />
       {/* Charity Routes */}
 
-      {/* <PrivateRoute path="/charity/donations/:charityId" component={CharityDonations} />
+      //<PrivateRoute path="/charity/donations/:charityId" component={CharityDonations} />
       {/* display all charity donations */}
-      {/* <PrivateRoute path="/charity/charities" component={MyCharities} /> */}
+      //<PrivateRoute path="/charity/charities" component={MyCharities} />
       {/* view all my charities */}
-      {/* <PrivateRoute path="/charity/shop/new" component={NewCharity} /> */}
-      {/* <PrivateRoute path="/charity/shop/edit/:shopId" component={EditCharity} /> */} */}
+      //<PrivateRoute path="/charity/shop/new" component={NewCharity} />
+      //<PrivateRoute path="/charity/shop/edit/:shopId" component={EditCharity} />
       {/* Auction Routes */}
       <PrivateRoute path="/myauctions" component={MyAuctions}/>
       <PrivateRoute path="/auction/new" component={NewAuction}/>

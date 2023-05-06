@@ -251,7 +251,7 @@ export default function CartItems(props) {
           </span>
         })
         }
-        {/* <br />
+        /*<br />
         {/* <div style={{backgroundColor: '#ffffff', borderRadius: '16px', paddingTop: '1rem', paddingBottom: '1rem', marginTop: '1rem'}}> */}
         <Card style={{ paddingBottom: '3rem', paddingTop: '1rem' }}>
           <p style={{ marginLeft: '1rem' }}>Donate to charity</p>
@@ -282,8 +282,8 @@ export default function CartItems(props) {
             {/* <!-- Next and previous buttons --> */}
             <a className="prev" onClick={() => plusSlides(-1)}>&#10094;</a>
             <a className="next" onClick={() => plusSlides(1)}>&#10095;</a>
-            <br /> */}
-
+            <br />
+*/
           </div>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             {
