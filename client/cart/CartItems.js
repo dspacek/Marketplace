@@ -139,11 +139,11 @@ export default function CartItems(props) {
 
 
   }
-
-
-
-
-
+  const getTotal = () => {
+    return cartItems.reduce((a, b) => {
+        return a + (b.quantity*b.product.price)
+    }, 0)
+  }
   const removeItem = index => event => {
     let updatedCartItems = cart.removeItem(index)
     if (updatedCartItems.length == 0) {
@@ -323,6 +323,13 @@ export default function CartItems(props) {
                 <Button color="primary" variant="contained">Sign in to checkout</Button>
               </Link>)}
           </div>
+          <span className={classes.total}>Total: ${getTotal()}</span>
+          {!props.checkout && (auth.isAuthenticated()?
+            <Button color="secondary" variant="contained" onClick={openCheckout}>Checkout</Button>
+            :
+            <Link to="/signin">
+              <Button color="primary" variant="contained">Sign in to checkout</Button>
+            </Link>)}
           <Link to='/' className={classes.continueBtn}>
             <Button variant="contained">Continue Shopping</Button>
           </Link>

@@ -1,5 +1,5 @@
 {
-  "name": "mern-marketplace",
+  "name": "mern-marketplace-bidding",
   "version": "2.0.0",
   "description": "A MERN stack based online marketplace application",
   "author": "Shama Hoque",
@@ -65,6 +65,8 @@
     "react-router-dom": "5.1.2",
     "react-stripe-elements": "6.1.1",
     "request": "2.88.2",
+    "socket.io": "2.3.0",
+    "socket.io-client": "2.3.0",
     "stripe": "8.38.0"
   }
 }
