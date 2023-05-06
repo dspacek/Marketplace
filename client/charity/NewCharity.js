@@ -47,16 +47,13 @@ const useStyles = makeStyles(theme => ({
 
 export default function NewCharity() {
     const classes = useStyles()
-       
     const [values, setValues] = useState({
         name: '',
         description: '',
         image: '',
         redirect: false,
         error: ''
-        
   })
-
   const jwt = auth.isAuthenticated()
 
   const handleChange = name => event => {
@@ -64,16 +61,12 @@ export default function NewCharity() {
       ? event.target.files[0]
       : event.target.value
     setValues({...values, [name]: value })
-    
   }
-
-
   const clickSubmit = () => {
-    
     let charityData = new FormData()
     values.name && charityData.append('name', values.name)
     values.description && charityData.append('description', values.description)
-    values.image && shopData.append('image', values.image)
+    values.image && charityData.append('image', values.image)
     create({
         userId: jwt.user._id
     }, {

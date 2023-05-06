@@ -24,7 +24,6 @@ const listByCharity = async (params, credentials, signal) => {
           'Authorization': 'Bearer ' + credentials.t
       }
     })
-      
       return response.json()
     } catch(err) {
       console.log(err)

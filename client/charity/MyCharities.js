@@ -71,7 +71,6 @@ export default function MyCharities() {
     if(redirectToSignin) {
       return <Redirect to='/signin'/>
     }
-
     return (
         <div>
             <Paper className={classes.root} elevation={4}>
@@ -114,6 +113,5 @@ export default function MyCharities() {
                 </List> 
             </Paper>
         </div>
-        
     )
 }

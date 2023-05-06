@@ -42,7 +42,7 @@ export default function DeleteCharity(props) {
         <DialogTitle>{"Delete "+props.charity.name}</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Confirm to delete your shop {props.charity.name}.
+            Confirm to delete your charity {props.charity.name}.
           </DialogContentText>
         </DialogContent>
         <DialogActions>

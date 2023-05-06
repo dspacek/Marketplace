@@ -69,20 +69,17 @@ export default function EditCharity({match}) {
         error: '',
         id: ''
     })
-    
     const jwt = auth.isAuthenticated()
     useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal
         read({
-            charityId: match.params.shopId
+          charityId: match.params.charityId
         }, signal).then((data) => {
-            
           if (data.error) {
             setValues({...values, error: data.error})
           } else {
             setValues({...values, id: data._id, name: data.name, description: data.description, owner: data.owner.name})
-            
             //setValues({...values, id: data._id, name: data.charity[0].name, description: data.description, owner: data.owner.name})
           }
         })
@@ -94,7 +91,6 @@ export default function EditCharity({match}) {
     const clickSubmit = () => {
         let charityData = new FormData()
         console.log("clickSubmit", values)
-        
         values.name && charityData.append('name', values.name)
         values.description && charityData.append('description', values.description)
         values.image && charityData.append('image', values.image)
@@ -102,7 +98,7 @@ export default function EditCharity({match}) {
           console.log("Charity Data", value)
         }
         update({
-          charityId: match.params.shopId
+          charityId: match.params.charityId
         }, {
           t: jwt.token
         }, charityData).then((data) => {
@@ -112,8 +108,7 @@ export default function EditCharity({match}) {
             setValues({...values, 'redirect': true})
           }
         })
-        console.log("CharityID", match.params.shopId)
-        
+        console.log("CharityID", match.params.charityId)
     }
 
     const handleChange = name => event => {
@@ -124,12 +119,11 @@ export default function EditCharity({match}) {
     }
     
     const logoUrl = values.id
-          ? `/api/shops/logo/${values.id}?${new Date().getTime()}`
-          : '/api/shops/defaultphoto'
+          ? `/api/charities/logo/${values.id}?${new Date().getTime()}`
+          : '/api/charities/defaultphoto'
     if (values.redirect) {
       return (<Redirect to={'/charity/charities'}/>)
     }
-
     return (<div className={classes.root}>
         <Grid container spacing={8}>
           <Grid item xs={6} sm={6}>
@@ -174,7 +168,9 @@ export default function EditCharity({match}) {
               </CardActions>
             </Card>
             </Grid>
-            
+            <Grid item xs={6} sm={6}>
+              <MyCharities charityId={match.params.charityId}/>
+            </Grid>
           </Grid>
       </div>)
   }

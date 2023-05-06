@@ -1,6 +1,5 @@
 const create = async (params, credentials, shop) => {
     try {
-        
         let response = await fetch('/api/charities/by/'+ params.userId, {
         method: 'POST',
         headers: {
@@ -8,7 +7,6 @@ const create = async (params, credentials, shop) => {
           'Authorization': 'Bearer ' + credentials.t
         },
         body: shop
-        
       })
         return response.json()
       } catch(err) { 
@@ -27,6 +25,7 @@ const create = async (params, credentials, shop) => {
       console.log(err)
     }
   }
+
   const listByOwner = async (params, credentials, signal) => {
     try {
       let response = await fetch('/api/charities/by/'+params.userId, {
@@ -50,10 +49,8 @@ const create = async (params, credentials, shop) => {
         method: 'GET',
         signal: signal,
       })
-      
       //console.log("Charity Response", response.json())
       return response.json()
-      
     }catch(err) {
       console.log(err)
     }
@@ -70,12 +67,12 @@ const create = async (params, credentials, shop) => {
         },
         body: shop
       })
-      
       return response.json()
     } catch(err) {
       console.log(err)
     }
   }
+
   const remove = async (params, credentials) => {
     try {
       let response = await fetch('/api/charities/' + params.shopId, {
@@ -86,7 +83,6 @@ const create = async (params, credentials, shop) => {
           'Authorization': 'Bearer ' + credentials.t
         }
       })
-      
       return response.json()
     } catch(err) {
       console.log(err)
