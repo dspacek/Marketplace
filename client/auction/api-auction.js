@@ -8,6 +8,7 @@ const create = async (params, credentials, auction) => {
       },
       body: auction
     })
+    console.log("auction!!!", response)
       return response.json()
     } catch(err) { 
       console.log(err)
