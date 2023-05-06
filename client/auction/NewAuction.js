@@ -90,11 +90,12 @@ export default function NewAuction() {
       values.startingBid && auctionData.append('startingBid', values.startingBid)
       values.bidStart && auctionData.append('bidStart', values.bidStart)
       values.bidEnd && auctionData.append('bidEnd', values.bidEnd)
+      
       create({
         userId: jwt.user._id
       }, {
         t: jwt.token
-      }, console.log("auctionData", auctionData), auctionData).then((data) => {
+      }, console.log("auctionData", auctionData), console.log("data", data), auctionData).then((data) => {
         if (data.error) {
           setValues({...values, error: data.error})
         } else {
