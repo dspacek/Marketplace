@@ -79,10 +79,10 @@ export default function NewCharity() {
       }
     })
   }
+
     if (values.redirect) {
         return (<Redirect to={'/charity/charities'}/>)
     }
-       
     return (
         <div>
             <Card className={classes.card}>
@@ -91,7 +91,6 @@ export default function NewCharity() {
                         New Charity
                     </Typography>
                     <br/>
-                    
                     <input accept="image/*" onChange={handleChange('image')} className={classes.input} id="icon-button-file" type="file" />
                     <label htmlFor="icon-button-file">
                         <Button variant="contained" color="secondary" component="span">
@@ -123,4 +122,3 @@ export default function NewCharity() {
         </div>
     )
 }
-

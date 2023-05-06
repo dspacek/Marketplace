@@ -94,7 +94,7 @@ export default function NewAuction() {
         userId: jwt.user._id
       }, {
         t: jwt.token
-      }, auctionData).then((data) => {
+      }, console.log("auctionData", auctionData), auctionData).then((data) => {
         if (data.error) {
           setValues({...values, error: data.error})
         } else {
