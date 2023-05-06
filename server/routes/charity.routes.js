@@ -9,8 +9,8 @@ const router = express.Router()
 router.route('/api/charities')
     .get(charityCtrl.list)
 
-router.route('/api/charities/:charityId')
-    .get(charityCtrl.one)
+// router.route('/api/charities/:charityId')
+//     .get(charityCtrl.one)
 
 router.route('/api/charity/:charityId')
     .get(charityCtrl.read)
@@ -23,6 +23,8 @@ router.route('/api/charities/:charityId')
     .put(authCtrl.requireSignin, charityCtrl.update)
     .delete(authCtrl.requireSignin, charityCtrl.remove)
     
+router.route('/api/charities/logo/:charityId')
+    .get(charityCtrl.photo, charityCtrl.defaultPhoto)
 
 router.param('charityId', charityCtrl.charityByID)
 router.param('userId', userCtrl.userByID)

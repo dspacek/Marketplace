@@ -5,6 +5,10 @@ const CharitySchema = new mongoose.Schema({
         trim: true,
         required: 'Name is required'
     },
+    image: {
+        data: Buffer,
+        contentType: String
+    },
     description: {
         type: String,
         trim: true

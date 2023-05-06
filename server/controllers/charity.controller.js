@@ -17,7 +17,7 @@ const create = async (req, res) => {
                 message: "Image could not be uploaded"
             })
         }
-        const charity = new Charity(fields)
+        let charity = new Charity(fields)
         charity.owner= req.profile
         console.log("CHARITY OWNER", charity.owner)
         if(files.image){
@@ -25,10 +25,8 @@ const create = async (req, res) => {
             charity.image.contentType = files.image.type
         }
         try {
-            await charity.save()
-            return res.status(200).json({
-                message: "Successfully created charity!"
-            })
+            let result = await charity.save()
+            res.status(200).json(result)
         } catch (err) {
             return res.status(400).json({
                 error: errorHandler.getErrorMessage(err)
@@ -89,7 +87,7 @@ const defaultPhoto = (req, res) => {
 }
 
 const read = (req, res) => {
-    //req.shop.image = undefined
+    req.charity.image = undefined
     console.log("READS RESPONSE", req.charity)
     return res.json(req.charity)
 }
