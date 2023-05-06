@@ -28,7 +28,6 @@ const OrderSchema = new mongoose.Schema({
     zipcode: {type: String, required: 'Zip Code is required'},
     country: {type: String, required: 'Country is required'}
   },
-  // donation: {type: mongoose.Schema.ObjectId, ref: 'Donation'},
   payment_id: {},
   updated: Date,
   created: {
