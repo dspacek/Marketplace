@@ -15,6 +15,7 @@ const create = (req, res) => {
       })
     }
     let auction = new Auction(fields)
+    console.log("Auction created!", auction)
     auction.seller= req.profile
     if(files.image){
       auction.image.data = fs.readFileSync(files.image.path)
