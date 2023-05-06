@@ -8,7 +8,6 @@ const create = async (params, credentials, shop) => {
       },
       body: shop
     })
-    console.log("shop!!!", response)
       return response.json()
     } catch(err) { 
       console.log(err)

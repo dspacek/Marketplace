@@ -112,7 +112,6 @@ const list = async (params, signal) => {
   try {
     let response = await fetch('/api/products?'+query, {
       method: 'GET',
-      signal: signal
     })
     return response.json()
   }catch(err) {

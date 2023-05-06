@@ -71,7 +71,7 @@ export default function NewShop() {
       userId: jwt.user._id
     }, {
       t: jwt.token
-    }, console.log("shopData", shopData), shopData).then((data) => {
+    }, shopData).then((data) => {
       if (data.error) {
         setValues({...values, error: data.error})
       } else {
